@@ -31,7 +31,14 @@ namespace Paks.Zip
             entriesTotal = zip.Entries.Count;
             _entriesExtracted = 0;
         }
-        
+
+        public ZipExtractor(Stream stream)
+        {
+            zip = new ZipArchive(stream, ZipArchiveMode.Read, false);
+            entriesTotal = zip.Entries.Count;
+            _entriesExtracted = 0;
+        }
+
         public void Extract() => Extract(Directory.GetCurrentDirectory());
 
         public void Extract(string destinationDirectoryName)
